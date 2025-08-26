@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adityanand Rai | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        /* SCIENTIFIC DARK THEME */
+        :root {
+            --primary-color: #00BFFF;
+            --primary-hover: #009ACD;
+            --bg-color: #0A192F;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #CCD6F6;
+            --heading-color: #E6F1FF;
+            --border-color: rgba(0, 191, 255, 0.2);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            background-image: radial-gradient(var(--primary-color) 0.5px, transparent 0.5px);
+            background-size: 25px 25px;
+        }
+        .container { max-width: 1100px; margin: auto; padding: 0 20px; }
+        section { padding: 100px 0; }
+        h2 {
+            font-family: 'Poppins', sans-serif; color: var(--heading-color);
+            text-align: center; margin-bottom: 60px; font-size: 2.8rem; position: relative;
+        }
+        h2::after {
+            content: ''; width: 80px; height: 4px; background: var(--primary-color);
+            position: absolute; bottom: -15px; left: 50%;
+            transform: translateX(-50%); border-radius: 2px;
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px); box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky; top: 0; z-index: 1000; width: 100%;
+        }
+        .logo {
+            font-family: 'Poppins', sans-serif; font-size: 1.8rem;
+            font-weight: 700; color: var(--primary-color); text-decoration: none;
+            display: flex; align-items: center;
+        }
+        .logo i { margin-right: 10px; }
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+        .nav-links a {
+            text-decoration: none; color: var(--heading-color);
+            font-weight: 600; transition: color 0.3s ease;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-icon { display: none; cursor: pointer; }
+        .menu-icon .bar {
+            display: block; width: 25px; height: 3px;
+            margin: 5px 0; background-color: var(--heading-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Home Section --- */
+        #home {
+            display: flex; align-items: center; justify-content: center;
+            min-height: 90vh; text-align: center;
+        }
+        .home-content { max-width: 800px; }
+        .profile-pic {
+            width: 180px; height: 180px;
+            border-radius: 50%; border: 4px solid var(--primary-color);
+            margin: 0 auto 30px;
+            background-size: cover; background-position: center;
+        }
+        .home-content h1 { font-family: 'Poppins', sans-serif; font-size: 3.5rem; color: var(--heading-color); }
+        .home-content .tagline { font-size: 1.2rem; color: var(--text-color); margin-top: 10px; }
+
+        /* --- About Section --- */
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        .about-text p { margin-bottom: 15px; }
+        .education-card {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            border-radius: 10px; border: 1px solid var(--border-color);
+            padding: 30px;
+        }
+        .education-card h3 { color: var(--primary-color); margin-bottom: 15px; }
+
+        /* --- Skills Section --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-item {
+            background: var(--card-bg); padding: 20px;
+            border-radius: 8px; border: 1px solid var(--border-color);
+        }
+        .skill-item h3 { font-family: 'Poppins'; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .progress-bar {
+            width: 100%; background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px; overflow: hidden;
+        }
+        .progress {
+            height: 10px; background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        /* --- Projects Section --- */
+        .project-card {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            border-radius: 10px; border: 1px solid var(--border-color);
+            overflow: hidden; transition: transform 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; }
+        .project-content { padding: 25px; }
+        .project-content h3 { color: var(--heading-color); }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .tech-tag {
+            background-color: var(--primary-color); color: var(--bg-color);
+            padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;
+        }
+        .project-link {
+            display: inline-block; color: var(--primary-color); text-decoration: none;
+            font-weight: bold; margin-top: 15px;
+        }
+        .project-link:hover { text-decoration: underline; }
+
+        /* --- Resume Section --- */
+        #resume { text-align: center; }
+        #resume p { max-width: 600px; margin: 0 auto 30px; }
+        .btn {
+            display: inline-block; padding: 14px 32px; background: var(--primary-color);
+            color: var(--bg-color); text-decoration: none; border-radius: 5px;
+            font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none;
+        }
+        .btn i { margin-right: 10px; }
+        .btn:hover { background: var(--primary-hover); }
+
+        /* --- Contact Section --- */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
+        .contact-info p { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .contact-info i { color: var(--primary-color); font-size: 1.5rem; }
+        .social-links { margin-top: 30px; }
+        .social-links a { color: var(--text-color); font-size: 2rem; margin-right: 20px; transition: all 0.3s ease; }
+        .social-links a:hover { color: var(--primary-color); transform: scale(1.2); }
+        .contact-form form { display: flex; flex-direction: column; gap: 20px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 15px; border-radius: 5px; border: 1px solid var(--border-color);
+            font-family: 'Lato', sans-serif; background: var(--card-bg); color: var(--text-color); font-size: 1rem;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary-color); }
+        
+        /* --- Footer --- */
+        footer { text-align: center; padding: 25px; border-top: 1px solid var(--border-color); }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            .menu-icon { display: block; }
+            .nav-links {
+                display: flex; flex-direction: column; align-items: center;
+                position: absolute; top: 100%; right: 0; width: 100%;
+                background: var(--bg-color); max-height: 0;
+                overflow: hidden; transition: max-height 0.5s ease-in-out;
+            }
+            .nav-links.open { max-height: 350px; padding: 1rem 0; }
+            .home-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="logo"><i class="fas fa-code"></i>
+            <span>AD</span>
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="menu-icon" id="menu-icon">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="profile-pic" style="background-image: url('adityanandrai.jpg');"></div>
+                <h1>Adityanand Rai</h1>
+                <p class="tagline">Collage student | Web Enthusiast | Sophomore</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2><i class="fas fa-user"></i> About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p> I am a passionate Computer Science student at Marwadi University 
+                        with a love for building things for the web. My journey in technology 
+                        started with a simple curiosity, which has now grown into a full-fledged
+                         passion for development, design, and sharing knowledge.</p>
+                </div>
+                <div class="education-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <p><strong>Bachelor's in Computer Science</strong> (2024-2028)<br> UNIVERSITY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2><i class="fas fa-cogs"></i> My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3><i class="fab fa-java"></i> Java</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fab fa-html5"></i>HTML</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 50%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fab fa-css3-alt"></i>CSS</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fab fa-js-square"></i> JavaScript</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fas fa-database"></i> MySQL</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fab fa-git-alt"></i> Git & GitHub</h3>
+                    <div class="progress-bar"><div class="progress" style="width: 5%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+
+        <div class="container">
+            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+            <div class="card-container">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 1 Screenshot">
+                    <div class="project-content">
+                        <h3>Student Management System</h3>
+                        <p>A desktop application to manage student records, attendance, and grades efficiently.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                        <a href="#" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 2 Screenshot">
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>My personal portfolio website to showcase my skills and projects.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                        <a href="#" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 3 Screenshot">
+                    <div class="project-content">
+                        <h3>Library Management System</h3>
+                        <p>A system for libraries to manage books, members, and the borrowing process.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">JDBC</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <a href="#" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 4 Screenshot">
+                    <div class="project-content">
+                        <h3>Weather App</h3>
+                        <p>A web app that fetches and displays weather data from a third-party API.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">API</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                        <a href="#" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 5 Screenshot">
+                    <div class="project-content">
+                        <h3>Calculator App</h3>
+                        <p>A functional calculator built using Java Swing for the user interface.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java Swing</span>
+                        </div>
+                        <a href="#" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="resume">
+        <div class="container">
+            <h2><i class="fas fa-file-alt"></i> My Resume</h2>
+            <p>You can view and download my detailed resume from the link below. It contains more information about my experience, skills, and projects.</p>
+            <a href="path/to/your/resume.pdf" class="btn" download><i class="fas fa-download"></i> Download Resume</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p><i class="fas fa-envelope"></i><span>adityanandrai28@gmil.com</span></p>
+                    <div class="social-links">
+                        <a href="https://github.com/Adityanand69" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/feed/?trk=sem-ga_campid.14650114791_asid.148989926303_crid.662526548046_kw.linkedin%20networking_d.c_tid.kwd-395392347080_n.g_mt.p_geo.1007749" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form action="https://formspree.io/f/xyzpvoeo" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Adityanand Rai | All Rights Reserved</p>
+
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+
+        });
+
+    </script>
+
+</body>
+</html>
